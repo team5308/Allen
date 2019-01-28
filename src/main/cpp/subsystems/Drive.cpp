@@ -22,7 +22,7 @@ std::shared_ptr<frc::SpeedControllerGroup> Drive::scg2;
 
 std::shared_ptr<frc::DifferentialDrive> Drive::diff;
 
-Drive::Drive() : Subsystem("ExampleSubsystem") {
+Drive::Drive() : Subsystem("Drive") {
     joy1.reset(new frc::Joystick(0));
 
     tal1.reset(new WPI_TalonSRX(0));
@@ -42,7 +42,7 @@ Drive::Drive() : Subsystem("ExampleSubsystem") {
 }
 
 void Drive::InitDefaultCommand() {
-  
+
 }
 
 double abs(double x){
