@@ -10,12 +10,12 @@
 #include <frc/commands/Scheduler.h>
 #include <frc/smartdashboard/SmartDashboard.h>
 
-OI Robot::m_oi;
+std::shared_ptr<OI> m_oi;
 
 void Robot::RobotInit() {
-  m_chooser.SetDefaultOption("Default Auto", &m_defaultAuto);
-  m_chooser.AddOption("My Auto", &m_myAuto);
-  frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
+//   m_chooser.SetDefaultOption("Default Auto", &m_defaultAuto);
+//   m_chooser.AddOption("My Auto", &m_myAuto);
+  // frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 }
 
 /**
@@ -57,11 +57,11 @@ void Robot::AutonomousInit() {
   //   m_autonomousCommand = &m_defaultAuto;
   // }
 
-  m_autonomousCommand = m_chooser.GetSelected();
+  // m_autonomousCommand = m_chooser.GetSelected();
 
-  if (m_autonomousCommand != nullptr) {
-    m_autonomousCommand->Start();
-  }
+  // if (m_autonomousCommand != nullptr) {
+  //   m_autonomousCommand->Start();
+  // }
 }
 
 void Robot::AutonomousPeriodic() { frc::Scheduler::GetInstance()->Run(); }
@@ -71,10 +71,10 @@ void Robot::TeleopInit() {
   // teleop starts running. If you want the autonomous to
   // continue until interrupted by another command, remove
   // this line or comment it out.
-  if (m_autonomousCommand != nullptr) {
-    m_autonomousCommand->Cancel();
-    m_autonomousCommand = nullptr;
-  }
+  // if (m_autonomousCommand != nullptr) {
+  //   m_autonomousCommand->Cancel();
+  //   m_autonomousCommand = nullptr;
+  // }
 }
 
 void Robot::TeleopPeriodic() { frc::Scheduler::GetInstance()->Run(); }

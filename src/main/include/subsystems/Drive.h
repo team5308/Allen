@@ -8,6 +8,8 @@
 #pragma once
 
 #include <frc/commands/Subsystem.h>
+#include <frc/WPILib.h>
+#include <ctre/Phoenix.h>
 
 class Drive : public frc::Subsystem {
  private:
@@ -15,4 +17,20 @@ class Drive : public frc::Subsystem {
  public:
   Drive();
   void InitDefaultCommand() override;
+  void Periodic() override;
+
+  static std::shared_ptr<frc::Joystick> joy1;
+  
+  static std::shared_ptr<WPI_TalonSRX> tal1;
+  static std::shared_ptr<WPI_TalonSRX> tal2;
+  static std::shared_ptr<WPI_VictorSPX> vic1;
+
+  static std::shared_ptr<WPI_TalonSRX> tal3;
+  static std::shared_ptr<WPI_TalonSRX> tal4;
+  static std::shared_ptr<WPI_VictorSPX> vic2;
+
+  static std::shared_ptr<frc::SpeedControllerGroup> scg1;
+  static std::shared_ptr<frc::SpeedControllerGroup> scg2;
+
+  static std::shared_ptr<frc::DifferentialDrive> diff;
 };
