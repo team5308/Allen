@@ -7,8 +7,8 @@
 
 #include "subsystems/Drive.h"
 
-Drive::Drive() : Subsystem("ExampleSubsystem") {}
+Drive::Drive() : Subsystem("Drive") {}
 
 void Drive::InitDefaultCommand() {
-  
+
 }

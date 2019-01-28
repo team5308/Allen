@@ -7,7 +7,7 @@
 
 #include "subsystems/Cargon.h"
 
-Cargon::Cargon() : Subsystem("ExampleSubsystem") {}
+Cargon::Cargon() : Subsystem("Cargon") {}
 
 void Cargon::InitDefaultCommand() {
   // Set the default command for a subsystem here.
