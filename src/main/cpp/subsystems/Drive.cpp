@@ -36,8 +36,8 @@ Drive::Drive() : Subsystem("Drive") {
     // scg1 = std::shared_ptr<frc::SpeedControllerGroup>(*tal1, *tal2, *vic1);
     // scg2 = std::shared_ptr<frc::SpeedControllerGroup>(*tal3, *tal4, *vic2);
 
-    scg1.reset(new frc::SpeedControllerGroup(*tal1, *tal2, *vic1)));
-    scg2.reset(new frc::SpeedControllerGroup(*tal3, *tal4, *vic2)));
+    scg1.reset(new frc::SpeedControllerGroup(*tal1, *tal2, *vic1));
+    scg2.reset(new frc::SpeedControllerGroup(*tal3, *tal4, *vic2));
     diff.reset(new frc::DifferentialDrive(*scg1, *scg2));
 }
 
@@ -62,6 +62,6 @@ double suoqu(double x){
 }
 
 void Drive::Periodic(){
-    diff -> ArcadeDrive(suoqu(joy1 -> GetY(), suoqu(joy1 -> GetX())));
+    diff -> ArcadeDrive(suoqu(joy1 -> GetY()), suoqu(joy1 -> GetX()));
 
 }

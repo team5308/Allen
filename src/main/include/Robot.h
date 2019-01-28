@@ -20,7 +20,7 @@
 class Robot : public frc::TimedRobot {
  public:
   static std::shared_ptr<Drive> DriveSystem;
-  static std::shared_ptr<OI> OI;
+  static std::shared_ptr<OI> m_oi;
 
   void RobotInit() override;
   void RobotPeriodic() override;

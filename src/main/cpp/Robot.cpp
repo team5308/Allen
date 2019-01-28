@@ -10,7 +10,7 @@
 #include <frc/commands/Scheduler.h>
 #include <frc/smartdashboard/SmartDashboard.h>
 
-OI Robot::m_oi;
+std::shared_ptr<OI> m_oi;
 
 void Robot::RobotInit() {
 //   m_chooser.SetDefaultOption("Default Auto", &m_defaultAuto);
