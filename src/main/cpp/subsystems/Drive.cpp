@@ -22,6 +22,9 @@ std::shared_ptr<frc::SpeedControllerGroup> Drive::scg2;
 
 std::shared_ptr<frc::DifferentialDrive> Drive::diff;
 
+std::shared_ptr<Solenoid> Drive::sol1;
+std::shared_ptr<Solenoid> Drive::sol2;
+
 Drive::Drive() : Subsystem("Drive") {
     joy1.reset(new frc::Joystick(0));
 
