@@ -7,12 +7,69 @@
 
 #include "subsystems/Cargon.h"
 
-Cargon::Cargon() : Subsystem("Cargon") {}
+std::shared_ptr<frc::Joystick> Cargon::joy1;
 
-void Cargon::InitDefaultCommand() {
-  // Set the default command for a subsystem here.
-  // SetDefaultCommand(new MySpecialCommand());
+std::shared_ptr<WPI_VictorSPX> Cargon::draVic1; /*Dragon VictorSPX*/
+std::shared_ptr<WPI_VictorSPX> Cargon::draVic2;
+
+std::shared_ptr<WPI_VictorSPX> Cargon::catVic1; /*Cat VictorSPX*/
+std::shared_ptr<rev::CANSparkMax> Cargon::catSpark; /*Cat SparkMax*/
+
+std::shared_ptr<rev::CANEncoder> Cargon::catEncoder;
+
+Cargon::Cargon() : Subsystem("Cargon") {
+  //Joystick Unfinished
+
+  darVic1.reset(new WPI_VictorSPX(6));
+  darVic2.reset(new WPI_VictorSPX(7));
+
+  catVic.reset(new WPI_VictorSPX(8));
+  catSpark.reset(new rev::CANSparkMax(9, rev::CANSparkMax::MotorType::kBrushless));
+
+  catEncoder.reset(new rev::CANEncoder(*catSpark));
 }
 
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
+void Cargon::InitDefaultCommand() {
+}
+
+void Cargon::Periodic() {
+}
+
+double calDiff(int target){
+  const int target0 = 0; /*The mode 0 position, number of turns is 0*/
+  const int target1 = 500; /*The mode 1 position, number of turns is 500*/
+  const int target2 = 1000; /*The mode 2 position, number of turns is 1000*/
+
+  double curPos = catEncoder -> GetPosition();
+
+  if(target == 0){
+    return curPos - target0;
+  }
+  else if(target == 1){
+    return curPos - target1;
+  }
+  else if(target == 2){
+    return curPos - target2;
+  }
+}
+/*Target is the objective position, waiting for Rico to set itself*/
+
+void Cargon::rotate(int target){
+  double diff = calDiff(target);
+  if(diff > 0){
+    catSpark -> Set(1);
+  }
+  else if(diff < 0){
+    catSpark -> Set(-1);
+  }
+  catSpark -> Set(0);
+}
+
+void Cargon::catIn(){
+  catVic1 -> Set(1);/*Get the cargo in*/
+}
+
+void Cargon::dragonOut(){
+  draVic1 -> Set(1);/*Shoot the cargo*/
+  draVic2 -> Set(-1);
+}
