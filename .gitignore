@@ -167,3 +167,5 @@ gradle/
 .wpilib/wpilib_preferences.json
 gradlew
 gradlew
+vendordeps/Phoenix.json
+vendordeps/REVRobotics.json
