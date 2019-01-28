@@ -164,3 +164,6 @@ bin/
 .wpilib/
 build/
 gradle/
+.wpilib/wpilib_preferences.json
+gradlew
+gradlew
