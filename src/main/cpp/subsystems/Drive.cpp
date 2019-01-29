@@ -22,8 +22,8 @@ std::shared_ptr<frc::SpeedControllerGroup> Drive::scg2;
 
 std::shared_ptr<frc::DifferentialDrive> Drive::diff;
 
-std::shared_ptr<Solenoid> Drive::sol1;
-std::shared_ptr<Solenoid> Drive::sol2;
+std::shared_ptr<frc::Solenoid> Drive::sol1;
+std::shared_ptr<frc::Solenoid> Drive::sol2;
 
 Drive::Drive() : Subsystem("Drive") {
     joy1.reset(new frc::Joystick(0));
@@ -36,11 +36,11 @@ Drive::Drive() : Subsystem("Drive") {
     tal4.reset(new WPI_TalonSRX(4));
     vic2.reset(new WPI_VictorSPX(5));
 
-    // scg1 = std::shared_ptr<frc::SpeedControllerGroup>(*tal1, *tal2, *vic1);
-    // scg2 = std::shared_ptr<frc::SpeedControllerGroup>(*tal3, *tal4, *vic2);
+     scg1 = std::make_shared<frc::SpeedControllerGroup>(*tal1, *tal2, *vic1);
+     scg2 = std::make_shared<frc::SpeedControllerGroup>(*tal3, *tal4, *vic2);
 
-    scg1.reset(new frc::SpeedControllerGroup(*tal1, *tal2, *vic1));
-    scg2.reset(new frc::SpeedControllerGroup(*tal3, *tal4, *vic2));
+    //scg1.reset(new frc::SpeedControllerGroup(*tal1, *tal2, *vic1));
+    //scg2.reset(new frc::SpeedControllerGroup(*tal3, *tal4, *vic2));
     diff.reset(new frc::DifferentialDrive(*scg1, *scg2));
 }
 
