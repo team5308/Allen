@@ -21,16 +21,17 @@ class Cargon : public frc::Subsystem {
   Cargon();
   void InitDefaultCommand() override;
   void Periodic() override;
-  void rotate(int target);
+  void rotate(int);
   void catIn();
   void dragonOut();
+  double calDiff(int);
 
   static std::shared_ptr<frc::Joystick> joy1;
 
   static std::shared_ptr<WPI_VictorSPX> draVic1; /*Dragon VictorSPX*/
   static std::shared_ptr<WPI_VictorSPX> draVic2;
 
-  static std::shared_ptr<WPI_VictorSPX> catVic1; /*Cat VictorSPX*/
+  static std::shared_ptr<WPI_VictorSPX> catVic; /*Cat VictorSPX*/
   static std::shared_ptr<rev::CANSparkMax> catSpark; /*Cat SparkMax*/
 
   static std::shared_ptr<rev::CANEncoder> catEncoder;

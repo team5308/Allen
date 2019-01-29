@@ -12,7 +12,7 @@ std::shared_ptr<frc::Joystick> Cargon::joy1;
 std::shared_ptr<WPI_VictorSPX> Cargon::draVic1; /*Dragon VictorSPX*/
 std::shared_ptr<WPI_VictorSPX> Cargon::draVic2;
 
-std::shared_ptr<WPI_VictorSPX> Cargon::catVic1; /*Cat VictorSPX*/
+std::shared_ptr<WPI_VictorSPX> Cargon::catVic; /*Cat VictorSPX*/
 std::shared_ptr<rev::CANSparkMax> Cargon::catSpark; /*Cat SparkMax*/
 
 std::shared_ptr<rev::CANEncoder> Cargon::catEncoder;
@@ -20,8 +20,8 @@ std::shared_ptr<rev::CANEncoder> Cargon::catEncoder;
 Cargon::Cargon() : Subsystem("Cargon") {
   //Joystick Unfinished
 
-  darVic1.reset(new WPI_VictorSPX(6));
-  darVic2.reset(new WPI_VictorSPX(7));
+  draVic1.reset(new WPI_VictorSPX(6));
+  draVic2.reset(new WPI_VictorSPX(7));
 
   catVic.reset(new WPI_VictorSPX(8));
   catSpark.reset(new rev::CANSparkMax(9, rev::CANSparkMax::MotorType::kBrushless));
@@ -35,7 +35,7 @@ void Cargon::InitDefaultCommand() {
 void Cargon::Periodic() {
 }
 
-double calDiff(int target){
+double Cargon::calDiff(int target){
   const int target0 = 0; /*The mode 0 position, number of turns is 0*/
   const int target1 = 500; /*The mode 1 position, number of turns is 500*/
   const int target2 = 1000; /*The mode 2 position, number of turns is 1000*/
@@ -66,7 +66,7 @@ void Cargon::rotate(int target){
 }
 
 void Cargon::catIn(){
-  catVic1 -> Set(1);/*Get the cargo in*/
+  catVic -> Set(1);/*Get the cargo in*/
 }
 
 void Cargon::dragonOut(){
