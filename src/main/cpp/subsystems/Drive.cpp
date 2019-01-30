@@ -41,9 +41,9 @@ Drive::Drive() : Subsystem("Drive") {
     tal4.reset(new WPI_TalonSRX(4));
     vic2.reset(new WPI_VictorSPX(5));
 
-    sol.reset(new frc::Solenoid(6));
+    sol.reset(new frc::Solenoid(11,7)); 
 
-    comp.reset(new frc::Compressor(7));
+    comp.reset(new frc::Compressor(11));
 
     joyButton1.reset(new frc::JoystickButton(joy1.get(),1));
     joyButton2.reset(new frc::JoystickButton(joy1.get(),2));
@@ -79,24 +79,27 @@ double suoqu(double x){
 
 void Drive::Periodic(){
     diff -> ArcadeDrive(suoqu(joy1 -> GetY()), suoqu(joy1 -> GetX()));
-
+    temp();
+    setSol();
 }
 
 void Drive::temp(){
     if(joyButton1 -> Get()){
         comp -> Start();
+        printf("Comp start!\n");
     }
     if(joyButton2 -> Get()){
         comp -> Stop();
+        printf("Comp end!\n");
     }
 }
 
 void Drive::setSol(){
     if(joyButton3 -> Get()){
-        if(sol->Get()){
             sol->Set(false);
         }else{
             sol->Set(true);
         }
+        printf("Sol status changed!\n");
     }
 }
