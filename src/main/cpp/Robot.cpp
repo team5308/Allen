@@ -11,6 +11,7 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 
 std::shared_ptr<OI> Robot::m_oi;
+std::shared_ptr<Rabbit> Robot::RabbitSystsem;
 std::shared_ptr<Drive> Robot::DriveSystem;
 std::shared_ptr<Cargon> Robot::CargonSystem;
 
@@ -18,6 +19,7 @@ void Robot::RobotInit() {
 //   m_chooser.SetDefaultOption("Default Auto", &m_defaultAuto);
 //   m_chooser.AddOption("My Auto", &m_myAuto);
   // frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
+   RabbitSystsem.reset(new Rabbit());
   m_oi.reset(new OI());
   DriveSystem.reset(new Drive());
   CargonSystem.reset(new Cargon());
