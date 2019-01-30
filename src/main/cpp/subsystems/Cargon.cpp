@@ -56,10 +56,10 @@ double Cargon::calDiff(int target){
 
 void Cargon::rotate(int target){
   double diff = calDiff(target);
-  if(diff > 0){
+  while(diff > 0){
     catSpark -> Set(1);
   }
-  else if(diff < 0){
+  while(diff < 0){
     catSpark -> Set(-1);
   }
   catSpark -> Set(0);
