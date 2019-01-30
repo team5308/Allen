@@ -22,6 +22,14 @@ std::shared_ptr<frc::SpeedControllerGroup> Drive::scg2;
 
 std::shared_ptr<frc::DifferentialDrive> Drive::diff;
 
+std::shared_ptr<frc::Solenoid> Drive::sol;
+
+std::shared_ptr<frc::Compressor> Drive::comp;
+
+std::shared_ptr<frc::JoystickButton> Drive::joyButton1;
+std::shared_ptr<frc::JoystickButton> Drive::joyButton2;
+std::shared_ptr<frc::JoystickButton> Drive::joyButton3;
+
 Drive::Drive() : Subsystem("Drive") {
     joy1.reset(new frc::Joystick(0));
 
@@ -33,11 +41,19 @@ Drive::Drive() : Subsystem("Drive") {
     tal4.reset(new WPI_TalonSRX(4));
     vic2.reset(new WPI_VictorSPX(5));
 
-    // scg1 = std::shared_ptr<frc::SpeedControllerGroup>(*tal1, *tal2, *vic1);
-    // scg2 = std::shared_ptr<frc::SpeedControllerGroup>(*tal3, *tal4, *vic2);
+    sol.reset(new frc::Solenoid(6));
 
-    scg1.reset(new frc::SpeedControllerGroup(*tal1, *tal2, *vic1));
-    scg2.reset(new frc::SpeedControllerGroup(*tal3, *tal4, *vic2));
+    comp.reset(new frc::Compressor(7));
+
+    joyButton1.reset(new frc::JoystickButton(joy1.get(),1));
+    joyButton2.reset(new frc::JoystickButton(joy1.get(),2));
+    joyButton3.reset(new frc::JoystickButton(joy1.get(),3));
+
+     scg1 = std::make_shared<frc::SpeedControllerGroup>(*tal1, *tal2, *vic1);
+     scg2 = std::make_shared<frc::SpeedControllerGroup>(*tal3, *tal4, *vic2);
+
+    //scg1.reset(new frc::SpeedControllerGroup(*tal1, *tal2, *vic1));
+    //scg2.reset(new frc::SpeedControllerGroup(*tal3, *tal4, *vic2));
     diff.reset(new frc::DifferentialDrive(*scg1, *scg2));
 }
 
@@ -64,4 +80,23 @@ double suoqu(double x){
 void Drive::Periodic(){
     diff -> ArcadeDrive(suoqu(joy1 -> GetY()), suoqu(joy1 -> GetX()));
 
+}
+
+void Drive::temp(){
+    if(joyButton1 -> Get()){
+        comp -> Start();
+    }
+    if(joyButton2 -> Get()){
+        comp -> Stop();
+    }
+}
+
+void Drive::setSol(){
+    if(joyButton3 -> Get()){
+        if(sol->Get()){
+            sol->Set(false);
+        }else{
+            sol->Set(true);
+        }
+    }
 }

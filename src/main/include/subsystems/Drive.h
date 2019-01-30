@@ -18,6 +18,8 @@ class Drive : public frc::Subsystem {
   Drive();
   void InitDefaultCommand() override;
   void Periodic() override;
+  void temp();
+  void setSol();
 
   static std::shared_ptr<frc::Joystick> joy1;
   
@@ -33,4 +35,12 @@ class Drive : public frc::Subsystem {
   static std::shared_ptr<frc::SpeedControllerGroup> scg2;
 
   static std::shared_ptr<frc::DifferentialDrive> diff;
+  
+  static std::shared_ptr<frc::Solenoid> sol;/*sol is Solenoid*/
+
+  static std::shared_ptr<frc::Compressor> comp;
+
+  static std::shared_ptr<frc::JoystickButton> joyButton1;
+  static std::shared_ptr<frc::JoystickButton> joyButton2;
+  static std::shared_ptr<frc::JoystickButton> joyButton3;
 };
