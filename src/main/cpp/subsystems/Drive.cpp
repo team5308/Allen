@@ -39,8 +39,6 @@ Drive::Drive() : Subsystem("Drive") {
      scg1 = std::make_shared<frc::SpeedControllerGroup>(*tal1, *tal2, *vic1);
      scg2 = std::make_shared<frc::SpeedControllerGroup>(*tal3, *tal4, *vic2);
 
-    //scg1.reset(new frc::SpeedControllerGroup(*tal1, *tal2, *vic1));
-    //scg2.reset(new frc::SpeedControllerGroup(*tal3, *tal4, *vic2));
     diff.reset(new frc::DifferentialDrive(*scg1, *scg2));
 }
 

@@ -12,6 +12,7 @@
 #include <ctre/Phoenix.h>
 #include "rev/CANSparkMax.h"
 
+
 class Cargon : public frc::Subsystem {
  private:
   // It's desirable that everything possible under private except

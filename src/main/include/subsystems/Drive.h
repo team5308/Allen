@@ -36,4 +36,5 @@ class Drive : public frc::Subsystem {
   
   static std::shared_ptr<frc::Solenoid> sol1;/*sol is Solenoid*/
   static std::shared_ptr<frc::Solenoid> sol2;
+
 };
