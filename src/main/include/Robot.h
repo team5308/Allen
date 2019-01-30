@@ -16,10 +16,12 @@
 #include "OI.h"
 #include "commands/MyAutoCommand.h"
 #include "subsystems/Drive.h"
+#include "subsystems/Cargon.h"
 
 class Robot : public frc::TimedRobot {
  public:
   static std::shared_ptr<Drive> DriveSystem;
+  static std::shared_ptr<Cargon> CargonSystem;
   static std::shared_ptr<OI> m_oi;
 
   void RobotInit() override;
