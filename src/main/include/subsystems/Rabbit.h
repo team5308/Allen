@@ -11,6 +11,8 @@
 #include <ctre/Phoenix.h>
 #include <rev/CANSparkMax.h>
 #include <rev/CANEncoder.h>
+#include <rev/CANSparkMaxLowLevel.h>
+#include <frc/WPILib.h>
 
 class Rabbit : public frc::Subsystem {
  private:
@@ -21,11 +23,11 @@ class Rabbit : public frc::Subsystem {
   static std::shared_ptr<rev::CANSparkMax> rabSpark;
   static std::shared_ptr<rev::CANEncoder> rabEncoder;
 
-  static std::shared_ptr<Solenoid> rabSole;
+  static std::shared_ptr<frc::Solenoid> rabSole;
 
   /*Deanck*/
-  static std::shared_ptr<Solenoid> deLift;
-  static std::shared_ptr<Solenoid> deDick;
+  static std::shared_ptr<frc::Solenoid> deLift;
+  static std::shared_ptr<frc::Solenoid> deDick;
 
 
   double rabStPos;

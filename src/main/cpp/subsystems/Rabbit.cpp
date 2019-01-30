@@ -11,18 +11,18 @@
 std::shared_ptr<WPI_TalonSRX> Rabbit::ratTal;
 std::shared_ptr<rev::CANSparkMax> Rabbit::rabSpark;
 std::shared_ptr<rev::CANEncoder> Rabbit::rabEncoder;
-std::shared_ptr<Solenoid> Rabbit::rabSole;
+std::shared_ptr<frc::Solenoid> Rabbit::rabSole;
 
 /* static Deanck*/
-std::shared_ptr<Solenoid> Rabbit::deLift;
-std::shared_ptr<Solenoid> Rabbit::deDick;
+std::shared_ptr<frc::Solenoid> Rabbit::deLift;
+std::shared_ptr<frc::Solenoid> Rabbit::deDick;
 
 
 Rabbit::Rabbit() : Subsystem("Rabbit") 
 {
     /* Rabit */
-    ratTal.reset(new WPI_TalonSRX());
-    rabSpark.reset(new rabSpark());
+    ratTal.reset(new WPI_TalonSRX(1));
+    rabSpark.reset(new rev::CANSparkMax(2, rev::CANSparkMaxLowLevel::MotorType::kBrushless));
     rabEncoder.reset(new rev::CANEncoder(*rabSpark));  
 
     rabStPos = rabEncoder->GetPosition();
