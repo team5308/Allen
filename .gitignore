@@ -170,3 +170,5 @@ gradlew
 
 vendordeps/REVRobotics.json
 vendordeps/Phoenix.json
+.vscode/settings.json
+
