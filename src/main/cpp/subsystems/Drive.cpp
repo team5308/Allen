@@ -22,6 +22,7 @@ std::shared_ptr<frc::SpeedControllerGroup> Drive::scg2;
 
 std::shared_ptr<frc::DifferentialDrive> Drive::diff;
 
+<<<<<<< HEAD
 std::shared_ptr<frc::Solenoid> Drive::sol;
 
 std::shared_ptr<frc::Compressor> Drive::comp;
@@ -29,6 +30,10 @@ std::shared_ptr<frc::Compressor> Drive::comp;
 std::shared_ptr<frc::JoystickButton> Drive::joyButton1;
 std::shared_ptr<frc::JoystickButton> Drive::joyButton2;
 std::shared_ptr<frc::JoystickButton> Drive::joyButton3;
+=======
+std::shared_ptr<frc::Solenoid> Drive::sol1;
+std::shared_ptr<frc::Solenoid> Drive::sol2;
+>>>>>>> parent of 388ad6a... Revert "Revert "Revert "merge all subsystems together  (#6)"""
 
 Drive::Drive() : Subsystem("Drive") {
     joy1.reset(new frc::Joystick(0));
@@ -41,6 +46,7 @@ Drive::Drive() : Subsystem("Drive") {
     tal4.reset(new WPI_TalonSRX(4));
     vic2.reset(new WPI_VictorSPX(5));
 
+<<<<<<< HEAD
     sol.reset(new frc::Solenoid(6));
 
     comp.reset(new frc::Compressor(7));
@@ -54,6 +60,11 @@ Drive::Drive() : Subsystem("Drive") {
 
     //scg1.reset(new frc::SpeedControllerGroup(*tal1, *tal2, *vic1));
     //scg2.reset(new frc::SpeedControllerGroup(*tal3, *tal4, *vic2));
+=======
+     scg1 = std::make_shared<frc::SpeedControllerGroup>(*tal1, *tal2, *vic1);
+     scg2 = std::make_shared<frc::SpeedControllerGroup>(*tal3, *tal4, *vic2);
+
+>>>>>>> parent of 388ad6a... Revert "Revert "Revert "merge all subsystems together  (#6)"""
     diff.reset(new frc::DifferentialDrive(*scg1, *scg2));
 }
 

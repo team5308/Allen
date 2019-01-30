@@ -8,6 +8,10 @@
 #pragma once
 
 #include <frc/commands/Subsystem.h>
+#include <frc/WPILib.h>
+#include <ctre/Phoenix.h>
+#include "rev/CANSparkMax.h"
+
 
 class Cargon : public frc::Subsystem {
  private:
@@ -17,4 +21,19 @@ class Cargon : public frc::Subsystem {
  public:
   Cargon();
   void InitDefaultCommand() override;
+  void Periodic() override;
+  void rotate(int);
+  void catIn();
+  void dragonOut();
+  double calDiff(int);
+
+  static std::shared_ptr<frc::Joystick> joy1;
+
+  static std::shared_ptr<WPI_VictorSPX> draVic1; /*Dragon VictorSPX*/
+  static std::shared_ptr<WPI_VictorSPX> draVic2;
+
+  static std::shared_ptr<WPI_VictorSPX> catVic; /*Cat VictorSPX*/
+  static std::shared_ptr<rev::CANSparkMax> catSpark; /*Cat SparkMax*/
+
+  static std::shared_ptr<rev::CANEncoder> catEncoder;
 };
