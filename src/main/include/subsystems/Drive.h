@@ -36,7 +36,6 @@ class Drive : public frc::Subsystem {
 
   static std::shared_ptr<frc::DifferentialDrive> diff;
   
-<<<<<<< HEAD
   static std::shared_ptr<frc::Solenoid> sol;/*sol is Solenoid*/
 
   static std::shared_ptr<frc::Compressor> comp;
@@ -44,9 +43,4 @@ class Drive : public frc::Subsystem {
   static std::shared_ptr<frc::JoystickButton> joyButton1;
   static std::shared_ptr<frc::JoystickButton> joyButton2;
   static std::shared_ptr<frc::JoystickButton> joyButton3;
-=======
-  static std::shared_ptr<frc::Solenoid> sol1;/*sol is Solenoid*/
-  static std::shared_ptr<frc::Solenoid> sol2;
-
->>>>>>> parent of 388ad6a... Revert "Revert "Revert "merge all subsystems together  (#6)"""
 };
