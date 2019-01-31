@@ -40,4 +40,6 @@ class BasicPID {
 
   void push(double);
   void output();
+
+  void info();
 };

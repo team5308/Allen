@@ -48,6 +48,10 @@ void BasicPID::push(double err) {
 void BasicPID::output() {
     outputValue  = kp * rm.back();
     outputValue += ki * rm_sum / cycNum;
-    outputValue += kd * (rm.back() - rm_sum / cycNum);
+    outputValue += kd * (rm.back() - rm.front());
+    printf("outputValue: %.2f\nPID org: %.2f", outputValue, rm.back());
 }
 
+void BasicPID::info() {
+    /* info sth here.*/
+}
