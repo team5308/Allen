@@ -9,9 +9,13 @@
 #include "BasicPID.h"
 
 BasicPID::BasicPID() {
+    rm_sum = 0;
+    cycNum = 10;
 }
 
-BasicPID::BasicPID(double p, double i, double d) : kp(p), ki(i), kd(d) {
+BasicPID::BasicPID(double p, double i, double d, int cycle_num = 10) 
+                            : kp(p), ki(i), kd(d), cycNum(cycle_num) {
+    rm_sum = 0;
 }
 
 void BasicPID::setP(double p) {
@@ -31,3 +35,19 @@ void BasicPID::setPara(double p, double i, double d) {
     this->ki = i;
     this->kd = d;
 }
+
+void BasicPID::push(double err) {
+    rm_sum += err;
+    rm.push(err);
+    while(rm.size() > cycNum) {
+        rm_sum -= rm.front(); 
+        rm.pop();
+    }
+}
+
+void BasicPID::output() {
+    outputValue  = kp * rm.back();
+    outputValue += ki * rm_sum / cycNum;
+    outputValue += kd * (rm.back() - rm_sum / cycNum);
+}
+
