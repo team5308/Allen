@@ -17,14 +17,27 @@ class BasicPID {
   double ki;
   double kd;
 
+  double cp;
+  double ci;
+  double cd;
+
+  int cycNum;
+
   std::queue<double> rm;
+  long double rm_sum;
 
  public:
+  
+  double outputValue;
+
   BasicPID();
-  BasicPID(double, double, double);
+  BasicPID(double, double, double, int);
   
   void setP(double);
   void setI(double);
   void setD(double);
   void setPara(double, double, double);
+
+  void push(double);
+  void output();
 };
