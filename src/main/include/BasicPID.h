@@ -9,6 +9,7 @@
 #pragma once
 
 #include <queue>
+#include <cstdio>
 
 class BasicPID {
  private:
