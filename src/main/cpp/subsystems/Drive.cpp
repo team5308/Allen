@@ -11,11 +11,11 @@ std::shared_ptr<frc::Joystick> Drive::joy1;
 
 std::shared_ptr<WPI_TalonSRX> Drive::tal1;
 std::shared_ptr<WPI_TalonSRX> Drive::tal2;
-std::shared_ptr<WPI_VictorSPX> Drive::vic1;
+std::shared_ptr<rev::CANSparkMax> Drive::spa1;
 
 std::shared_ptr<WPI_TalonSRX> Drive::tal3;
 std::shared_ptr<WPI_TalonSRX> Drive::tal4;
-std::shared_ptr<WPI_VictorSPX> Drive::vic2;
+std::shared_ptr<rev::CANSparkMax> Drive::spa2;
 
 std::shared_ptr<frc::SpeedControllerGroup> Drive::scg1;
 std::shared_ptr<frc::SpeedControllerGroup> Drive::scg2;
@@ -30,14 +30,14 @@ Drive::Drive() : Subsystem("Drive") {
 
     tal1.reset(new WPI_TalonSRX(0));
     tal2.reset(new WPI_TalonSRX(1));
-    vic1.reset(new WPI_VictorSPX(2));
+    spa1.reset(new rev::CANSparkMax(2, rev::CANSparkMax::MotorType::kBrushless));
 
     tal3.reset(new WPI_TalonSRX(3));
     tal4.reset(new WPI_TalonSRX(4));
-    vic2.reset(new WPI_VictorSPX(5));
+    spa2.reset(new rev::CANSparkMax(5, rev::CANSparkMax::MotorType::kBrushless));
 
-     scg1 = std::make_shared<frc::SpeedControllerGroup>(*tal1, *tal2, *vic1);
-     scg2 = std::make_shared<frc::SpeedControllerGroup>(*tal3, *tal4, *vic2);
+     scg1 = std::make_shared<frc::SpeedControllerGroup>(*tal1, *tal2, *spa1);
+     scg2 = std::make_shared<frc::SpeedControllerGroup>(*tal3, *tal4, *spa2);
 
     diff.reset(new frc::DifferentialDrive(*scg1, *scg2));
 }
