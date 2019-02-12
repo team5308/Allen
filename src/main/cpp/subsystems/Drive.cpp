@@ -9,13 +9,13 @@
 
 std::shared_ptr<frc::Joystick> Drive::joy1;
 
-std::shared_ptr<WPI_TalonSRX> Drive::tal1;
-std::shared_ptr<WPI_TalonSRX> Drive::tal2;
-std::shared_ptr<rev::CANSparkMax> Drive::spa1;
+std::shared_ptr<rev::CANSparkMax> Drive::spaD1;
+std::shared_ptr<rev::CANSparkMax> Drive::spaD2;
+std::shared_ptr<WPI_TalonSRX> Drive::talD1;
 
-std::shared_ptr<WPI_TalonSRX> Drive::tal3;
-std::shared_ptr<WPI_TalonSRX> Drive::tal4;
-std::shared_ptr<rev::CANSparkMax> Drive::spa2;
+std::shared_ptr<rev::CANSparkMax> Drive::spaD3;
+std::shared_ptr<rev::CANSparkMax> Drive::spaD4;
+std::shared_ptr<WPI_TalonSRX> Drive::talD2;
 
 std::shared_ptr<frc::SpeedControllerGroup> Drive::scg1;
 std::shared_ptr<frc::SpeedControllerGroup> Drive::scg2;
@@ -28,16 +28,16 @@ std::shared_ptr<frc::Solenoid> Drive::sol2;
 Drive::Drive() : Subsystem("Drive") {
     joy1.reset(new frc::Joystick(0));
 
-    tal1.reset(new WPI_TalonSRX(0));
-    tal2.reset(new WPI_TalonSRX(1));
-    spa1.reset(new rev::CANSparkMax(2, rev::CANSparkMax::MotorType::kBrushless));
+    spaD1.reset(new rev::CANSparkMax(6,rev::CANSparkMax::Motortype::kBrushless));
+    spaD2.reset(new rev::CANSparkMax(7,rev::CANSparkMax::Motortype::kBrushed));
+    talD1.reset(new WPI_TalonSRX(2));
 
-    tal3.reset(new WPI_TalonSRX(3));
-    tal4.reset(new WPI_TalonSRX(4));
-    spa2.reset(new rev::CANSparkMax(5, rev::CANSparkMax::MotorType::kBrushless));
+    spaD3.reset(new rev::CANSparkMax(8,rev::CANSparkMax::Motortype::kBrushless));
+    spaD4.reset(new rev::CANSparkMax(9,rev::CANSparkMax::Motortype::kBrushed));
+    talD2.reset(new WPI_TalonSRX(3));
 
-     scg1 = std::make_shared<frc::SpeedControllerGroup>(*tal1, *tal2, *spa1);
-     scg2 = std::make_shared<frc::SpeedControllerGroup>(*tal3, *tal4, *spa2);
+     scg1 = std::make_shared<frc::SpeedControllerGroup>(*spaD1, *spaD2, *talD1);
+     scg2 = std::make_shared<frc::SpeedControllerGroup>(*spaD3, *spaD4, *talD2);
 
     diff.reset(new frc::DifferentialDrive(*scg1, *scg2));
 }

@@ -22,13 +22,13 @@ class Drive : public frc::Subsystem {
 
   static std::shared_ptr<frc::Joystick> joy1;
   
-  static std::shared_ptr<WPI_TalonSRX> tal1;
-  static std::shared_ptr<WPI_TalonSRX> tal2;
-  static std::shared_ptr<rev::CANSparkMax> spa1;
+  static std::shared_ptr<rev::CANSparkMax> spaD1;
+  static std::shared_ptr<rev::CANSparkMax> spaD2;
+  static std::shared_ptr<WPI_TalonSRX> talD1;
 
-  static std::shared_ptr<WPI_TalonSRX> tal3;
-  static std::shared_ptr<WPI_TalonSRX> tal4;
-  static std::shared_ptr<rev::CANSparkMax> spa2;
+  static std::shared_ptr<rev::CANSparkMax> spaD3;
+  static std::shared_ptr<rev::CANSparkMax> spaD4;
+  static std::shared_ptr<WPI_TalonSRX> talD2;
 
   static std::shared_ptr<frc::SpeedControllerGroup> scg1;
   static std::shared_ptr<frc::SpeedControllerGroup> scg2;
