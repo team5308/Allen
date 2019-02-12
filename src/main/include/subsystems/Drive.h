@@ -10,6 +10,7 @@
 #include <frc/commands/Subsystem.h>
 #include <frc/WPILib.h>
 #include <ctre/Phoenix.h>
+#include "rev/CANSparkMax.h"
 
 class Drive : public frc::Subsystem {
  private:
@@ -23,11 +24,11 @@ class Drive : public frc::Subsystem {
   
   static std::shared_ptr<WPI_TalonSRX> tal1;
   static std::shared_ptr<WPI_TalonSRX> tal2;
-  static std::shared_ptr<WPI_VictorSPX> vic1;
+  static std::shared_ptr<rev::CANSparkMax> spa1;
 
   static std::shared_ptr<WPI_TalonSRX> tal3;
   static std::shared_ptr<WPI_TalonSRX> tal4;
-  static std::shared_ptr<WPI_VictorSPX> vic2;
+  static std::shared_ptr<rev::CANSparkMax> spa2;
 
   static std::shared_ptr<frc::SpeedControllerGroup> scg1;
   static std::shared_ptr<frc::SpeedControllerGroup> scg2;

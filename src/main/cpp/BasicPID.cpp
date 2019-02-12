@@ -7,6 +7,7 @@
 /*----------------------------------------------------------------------------*/
 
 #include "BasicPID.h"
+#include <cstdio>
 
 BasicPID::BasicPID() {
     rm_sum = 0;
